@@ -8,6 +8,7 @@ const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
 const connectDB = require("./config/db");
 
 const referralRoutes = require("./routes/referral");
+const adminRoutes = require("./routes/admin");
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/api/v1/referrals", referralRoutes);
+
+app.use("/api/v1/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello world :)");
