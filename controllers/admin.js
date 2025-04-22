@@ -6,6 +6,8 @@ const asyncHandler = require("express-async-handler");
 const createAdmin = asyncHandler(async (req, res) => {
   const { username, password } = req.body;
 
+  console.log(username);
+
   // Check if the admin already exists
   const adminExists = await Admin.findOne({ username });
   if (adminExists) {
@@ -13,11 +15,11 @@ const createAdmin = asyncHandler(async (req, res) => {
     throw new Error("Username already exists");
   }
   // Create new admin
-  const admin = new Admin({ name, password, email });
+  const admin = new Admin({ username, password });
   await admin.save();
 
   res.status(201).json({
-    message: "Admin created successfully",
+    msg: "Admin created successfully",
     admin: {
       name: admin.username,
       role: admin.role,
@@ -43,7 +45,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
   }
 
   res.json({
-    message: "Login successful",
+    msg: "Login successful",
     admin: {
       name: admin.username,
     },
