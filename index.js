@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "https://madeforease.shop",
-      "http://localhost:3000",
+      "https://madeforease.netlify.app",
       "http://localhost:5173",
     ],
     credentials: true,

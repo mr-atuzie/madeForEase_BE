@@ -6,8 +6,6 @@ const asyncHandler = require("express-async-handler");
 const createAdmin = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
-  console.log({ name, email, password });
-
   // Check if the admin already exists
   const adminExists = await Admin.findOne({ email });
   if (adminExists) {

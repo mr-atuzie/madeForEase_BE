@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const referralSchema = new mongoose.Schema(
   {
-    name: {
+    fullname: {
       type: String,
-      required: [true, "Please enetr yor fullname"],
+      // required: [true, "Please enetr yor fullname"],
       trim: true,
     },
     email: {
@@ -18,6 +18,8 @@ const referralSchema = new mongoose.Schema(
         "Please use a valid email address",
       ],
     },
+    phone: { type: String, required: true },
+    orderNumber: { type: String, required: true, unique: true },
   },
   { timestamps: true }
 );
