@@ -8,9 +8,9 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    email: {
+    username: {
       type: String,
-      required: [true, "Please enter  a valid email"],
+      required: [true, "Please enter  a valid username"],
       unique: true,
     },
     password: {

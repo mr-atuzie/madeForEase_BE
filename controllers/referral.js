@@ -5,33 +5,19 @@ const asyncHandler = require("express-async-handler");
 const registerUser = asyncHandler(async (req, res) => {
   const { fullname, email, phone, orderNumber } = req.body;
 
-  console.log({
-    fullname,
-    email,
-    phone,
-    orderNumber,
-  });
-
   // Validate required fields
   if (!fullname || !email || !phone || !orderNumber) {
     res.status(400);
     throw new Error("Please enter all required fields");
   }
 
-  // Check if user already exists by email or order number
-  const existingUser = await Referral.findOne({
-    $or: [{ email }, { orderNumber }],
-  });
+  // Check if order number already exists
+  // const existingOrder = await Referral.findOne({ orderNumber });
 
-  if (existingUser) {
-    if (existingUser.email === email) {
-      res.status(400);
-      throw new Error("Email already exists");
-    } else {
-      res.status(400);
-      throw new Error("Order number already exists");
-    }
-  }
+  // if (existingOrder) {
+  //   res.status(400);
+  //   throw new Error("Order number already exists");
+  // }
 
   // Create a new user
   const newUser = await Referral.create({

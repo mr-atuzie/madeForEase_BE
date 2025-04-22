@@ -4,13 +4,12 @@ const referralSchema = new mongoose.Schema(
   {
     fullname: {
       type: String,
-      // required: [true, "Please enetr yor fullname"],
+      required: [true, "Please enetr yor fullname"],
       trim: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
       match: [
@@ -19,7 +18,7 @@ const referralSchema = new mongoose.Schema(
       ],
     },
     phone: { type: String, required: true },
-    orderNumber: { type: String, required: true, unique: true },
+    orderNumber: { type: String, required: true },
   },
   { timestamps: true }
 );
